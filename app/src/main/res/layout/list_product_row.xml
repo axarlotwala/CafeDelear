@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/category_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/location"
+            android:background="@drawable/rectangleshape"/>
+
+        <TextView
+            android:id="@+id/category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tea is agreate way of \n hart of the hand"
+            android:layout_gravity="center"
+            android:singleLine="false"
+            android:layout_marginLeft="5dp" />
+
+    </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp">
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:kswTextOn="Visible"
+            app:kswTextOff="InVisible" />
+
+    </RelativeLayout>
+
+</LinearLayout>
