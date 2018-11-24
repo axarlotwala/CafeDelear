@@ -2,6 +2,7 @@ package com.cafedelear.aksha.cafedelear.Fragment;
 
 
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -20,6 +21,7 @@ public class ManageCategoryFragment extends Fragment {
     TabLayout tab_bar;
     ViewPager view_pager;
     ViewPagerAdapter adapter;
+    BottomNavigationView navigationView;
 
 
     public ManageCategoryFragment() {

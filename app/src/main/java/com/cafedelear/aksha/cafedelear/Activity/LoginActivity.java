@@ -124,10 +124,12 @@ public class LoginActivity extends AppCompatActivity {
                         String userid = jsonObject.getString("delear_id").toString();
                         String username = jsonObject.getString("delear_name").toString();
                         String useremail = jsonObject.getString("delear_email").toString();
+                        String profile = jsonObject.getString("profile").toString();
 
                         session.setDELEAR_ID(userid);
                         session.setDELEAR_EMAIL(useremail);
                         session.setDELEAR_NAME(username);
+                        session.setDELEAR_PROFILE(profile);
                         session.setIsLogin(true);
 
 
@@ -139,6 +141,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("Delear_name", "Name" + jsonObject.getString("delear_name"));
                         Log.d("IS_Login", "Check : " + session.getInstace(getApplicationContext()).getIsLogin());
                         Log.d("Get_Email", "Get :" + session.getDELEAR_EMAIL());
+                        Log.d("ProfileImage","Image : "+session.getDELEAR_PROFILE());
 
                     } else {
                         dialog.dismiss();

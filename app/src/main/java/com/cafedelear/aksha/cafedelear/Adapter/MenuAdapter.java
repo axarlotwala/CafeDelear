@@ -3,6 +3,7 @@ package com.cafedelear.aksha.cafedelear.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -35,7 +36,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
 
     private Context context;
     private List<Menu_model> menu_models;
-    private String menu_id,value;
+    private String menu_id;
 
 
     public MenuAdapter(Context context, List<Menu_model> menu_models) {
@@ -60,8 +61,76 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
+
         holder.menu_name.setText(menu_models.get(position).getMenu_name());
         Glide.with(context).load(menu_models.get(position).getMenu_url()).into(holder.menu_image);
+         holder.change_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                menu_id = menu_models.get(position).getMenu_id();
+                 /*holder.change_switch.setSplitTrack();*/
+                 /*holder.change_switch.setChecked(true)*/;
+
+                if (holder.change_switch.isChecked()){
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.Set_Menu_Url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context,error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> params = new HashMap<>();
+                        params.put("is_visible",holder.change_switch.getTextOn().toString());
+                        params.put("menu_id",menu_id);
+                        return params;
+                    }
+                };
+
+                RequestQueue requestQueue = Volley.newRequestQueue(context);
+                requestQueue.add(stringRequest);
+
+                }else {
+
+
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.Set_Menu_Url, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    }){
+
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String,String> params = new HashMap<>();
+                            params.put("menu_id",menu_id);
+                            params.put("is_visible",holder.change_switch.getTextOff().toString());
+                            return params;
+                        }
+                    };
+
+                    RequestQueue requestQueue = Volley.newRequestQueue(context);
+                    requestQueue.add(stringRequest);
+
+                }
+
+
+            }
+        });
+
 
         /*end bindview holdr*/
     }
@@ -70,7 +139,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
 
         private ImageView menu_image;
         private TextView menu_name;
-        private SwitchButton status;
+        private SwitchCompat change_switch;
 
 
 
@@ -80,7 +149,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
 
             menu_image = itemView.findViewById(R.id.category_image);
             menu_name = itemView.findViewById(R.id.category_name);
-            status = itemView.findViewById(R.id.status);
+            change_switch = itemView.findViewById(R.id.change_switch);
 
 
 

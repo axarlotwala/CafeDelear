@@ -3,6 +3,7 @@ package com.cafedelear.aksha.cafedelear.Utlities;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v7.widget.SwitchCompat;
 import android.widget.Toast;
 
 import com.kyleduo.switchbutton.SwitchButton;
@@ -14,12 +15,15 @@ public class Session {
      private SharedPreferences sharedPreferences;
      private SharedPreferences.Editor editor;
      String IsLogin;
+     private SwitchCompat switchCompat;
 
     private static final String PREF_NAME = "CafeDelear";
     private String DELEAR_ID = "delear_id";
     private String DELEAR_NAME = "delear_name";
     private String DELEAR_EMAIL = "delear_email";
     private String DELEAR_PROFILE = "profile";
+    private String is_visible = "ON";
+    private String Is_visible = "OFF";
 
     public Session(Context context){
         mContext = context;
@@ -79,6 +83,10 @@ public class Session {
         editor.putString(DELEAR_PROFILE,profile);
         editor.commit();
     }
+
+
+
+
 
     /*public void removeKey(String DELEAR_ID,String DELEAR_EMAIL){
 

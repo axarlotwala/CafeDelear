@@ -2,6 +2,8 @@ package com.cafedelear.aksha.cafedelear.Fragment;
 
 
 import android.os.Bundle;
+import android.support.design.internal.BottomNavigationMenu;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,7 +20,8 @@ import com.cafedelear.aksha.cafedelear.R;
  */
 public class HomeFragment extends Fragment {
 
-   private LinearLayout category_card,order_card,table_card,offer_card,complain_card,timer_card,location_card;
+   private LinearLayout category_card,order_card,table_card,offer_card,complain_card,timer_card;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -37,7 +40,7 @@ public class HomeFragment extends Fragment {
         offer_card = view.findViewById(R.id.offer_card);
         complain_card = view.findViewById(R.id.complain_card);
         timer_card = view.findViewById(R.id.time_card);
-        location_card = view.findViewById(R.id.location_card);
+        /*location_card = view.findViewById(R.id.location_card);*/
 
         AllClickEvents();
 
@@ -57,9 +60,9 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.Frame_container,new ManageCategoryFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
+
             }
         });
-
         table_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +75,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        location_card.setOnClickListener(new View.OnClickListener() {
+        /*location_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
@@ -81,7 +84,7 @@ public class HomeFragment extends Fragment {
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
-        });
+        });*/
 
         offer_card.setOnClickListener(new View.OnClickListener() {
             @Override

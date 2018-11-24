@@ -1,51 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <LinearLayout
         android:id="@+id/click"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:padding="10dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/category_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/location"
-            android:background="@drawable/rectangleshape"/>
+            android:background="@drawable/rectangleshape"
+            android:src="@drawable/location" />
 
-        <TextView
-            android:id="@+id/category_name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tea is agreate way of \n hart of the hand"
             android:layout_gravity="center"
-            android:singleLine="false"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/category_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:singleLine="false"
+                android:gravity="center_horizontal"
+                android:text="Tea is agreate way of hart of the hand" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp">
+
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/change_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                app:showText="true"
+                android:layout_alignParentRight="true"
+                app:splitTrack="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="right"
-            android:layout_marginRight="20dp">
-
-        <com.kyleduo.switchbutton.SwitchButton
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:kswTextOn="Visible"
-            app:kswTextOff="InVisible" />
-
-    </RelativeLayout>
 
 </LinearLayout>

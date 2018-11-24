@@ -17,6 +17,7 @@
         <activity
             android:name=".Activity.Bottom_navigationActivity"
             android:label="@string/title_activity_bottom_navigation" />
+
         <activity android:name=".Activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegistrationActivity"></activity>
     </application>

@@ -1,14 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Fragment.ProductOfferFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/cat_spinn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:tooltipText="Select Category">
+
+        </android.support.v7.widget.AppCompatSpinner>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/menu_spinn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:tooltipText="Select Menu">
+        </android.support.v7.widget.AppCompatSpinner>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/start_date"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangleshape"
+                android:padding="10dp"/>
+
+
+            <Button
+                android:id="@+id/startoffer_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/ColorBlue"
+                android:text="Start Offer"
+                android:textColor="@color/ColorWhite"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/end_date"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangleshape"
+                android:padding="10dp"/>
+
+
+            <Button
+                android:id="@+id/endoffer_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/ColorBlue"
+                android:text="End Offer"
+                android:layout_gravity="center"
+                android:textColor="@color/ColorWhite"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Offer"
+                android:padding="10dp"
+                android:background="@drawable/rectangleshape"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+
+            <EditText
+                android:id="@+id/offer_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:hint="Enter Offer"
+                android:background="@drawable/rectangleshape"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="%"
+                android:padding="10dp"
+                android:background="@drawable/rectangleshape"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/save_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/ColorBlue"
+            android:text="Save Offer"
+            android:textColor="@color/ColorWhite"
+            android:padding="10dp"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </FrameLayout>

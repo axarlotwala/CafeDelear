@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.SplashScreenActivity"
     android:orientation="vertical"
-    android:background="@drawable/startscreen">
+    android:background="@drawable/startscreen"
+    android:layout_gravity="center">
 
 </LinearLayout>
