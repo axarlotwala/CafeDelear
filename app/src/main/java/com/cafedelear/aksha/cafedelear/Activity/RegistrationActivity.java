@@ -139,7 +139,6 @@ public class RegistrationActivity extends AppCompatActivity {
                             Log.d("Check_Loin","Or Not"+session.getInstace(getApplicationContext()).getIsLogin());
                             Intent intent = new Intent(RegistrationActivity.this, Bottom_navigationActivity.class);
                             startActivity(intent);
-                            finish();
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
 
                         }

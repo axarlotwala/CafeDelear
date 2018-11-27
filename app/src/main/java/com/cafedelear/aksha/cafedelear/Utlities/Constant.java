@@ -13,7 +13,7 @@ public class Constant {
     public static final String Set_Category_url = Base_Url+"Set_Category.php";
     public static final String Delete_Category_Url = Base_Url+"Delete_Category.php";
     public static final String Update_Category_Url = Base_Url+"Update_Category.php";
-    public static final String Single_Menu_List_Url = Base_Url+"Menu_List.php";
+    public static final String Single_Menu_List_Url = Base_Url+"Single_Product.php";
     public static final String Set_Menu_Url = Base_Url+"Set_Product.php";
     public static final String Temp_Image = Base_Url+"temp_image.php";
     public static final String profile_Update = Base_Url+"Profile_Upload.php";

@@ -81,10 +81,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                         .addToBackStack(null)
                         .commit();
 
+                cat = category_models.get(position).getCat_id();
+                Bundle bundle = new Bundle();
+                bundle.putString("cat_id",cat);
+
 
                 Toast.makeText(context,category_models.get(position).getCat_id(), Toast.LENGTH_SHORT).show();
                 Log.v("CAT_ID",category_models.get(position).getCat_id());
 
+                fragment.setArguments(bundle);
             }
         });
 

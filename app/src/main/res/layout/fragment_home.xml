@@ -24,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/greelabel" />
+            android:background="@drawable/greelabel"
+            android:scaleType="centerCrop"/>
 
         <View
             android:layout_width="match_parent"
@@ -144,8 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -153,9 +153,10 @@
                     android:src="@drawable/icons_comments" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Complain" />
+                    android:text="Complain"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -182,9 +183,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:padding="10dp"
-                    android:text="Set Time"
-                    android:textStyle="bold" />
+                    android:text="Set Time" />
 
             </LinearLayout>
 
@@ -213,8 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Offer"
-                    android:padding="10dp" />
+                    android:text="Offer" />
 
             </LinearLayout>
 
@@ -227,44 +225,108 @@
 
         </LinearLayout>
 
-        </LinearLayout>
-        <!--
+            <!--Third row view-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ColorBlue" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="50dp">
+
+                <LinearLayout
+                    android:id="@+id/booked_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/icons_table" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Booked Table"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="130dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/ColorBlue" />
 
 
+                <LinearLayout
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp">
 
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/location" />
 
-
-
-
-
-
-
-
-
-                    <LinearLayout
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:orientation="vertical">
+                        android:text="Branches" />
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/icons_commercial" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="View Order"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
+                </LinearLayout>
 
 
--->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="130dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/ColorBlue" />
+
+
+                <LinearLayout
+                    android:id="@+id/latest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/icons_discount" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="latest" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ColorBlue" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 </FrameLayout>

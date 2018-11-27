@@ -47,8 +47,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 app:showText="true"
-                android:layout_alignParentRight="true"
-                app:splitTrack="true"/>
+                android:layout_alignParentRight="true" />
 
             </RelativeLayout>
 

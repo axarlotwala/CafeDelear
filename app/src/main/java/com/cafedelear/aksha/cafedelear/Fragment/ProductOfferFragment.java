@@ -1,12 +1,11 @@
 package com.cafedelear.aksha.cafedelear.Fragment;
 
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatSpinner;
-import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,8 +35,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -81,6 +77,8 @@ public class ProductOfferFragment extends Fragment {
         save_offer = view.findViewById(R.id.save_offer);
         offer_value = view.findViewById(R.id.offer_value);
 
+        cat_spinn.setPrompt("Select Category");
+        menu_spinn.setPrompt("Select Menu");
 
 
         /*dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000); */// for show only present and future date
@@ -98,7 +96,6 @@ public class ProductOfferFragment extends Fragment {
 
         delearid = session.getDELEAR_ID();
 
-
         /*menu Spinner Data*/
 
         menu_spinn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -114,7 +111,6 @@ public class ProductOfferFragment extends Fragment {
 
             }
         });
-
 
         /*Category Spinner Data*/
 
@@ -254,7 +250,7 @@ public class ProductOfferFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                start_date.setText(dayOfMonth + "-" + (month+1) + "-" + year);
+                start_date.setText(year + "-" + (month+1) + "-" + dayOfMonth);
             }
         },myear,dmonth,mdate);
         dialog.show();
@@ -275,7 +271,7 @@ public class ProductOfferFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                end_date.setText(dayOfMonth + "-" + (month+1) + "-" + year);
+                end_date.setText(year + "-" + (month+1) + "-" + dayOfMonth);
             }
         },myear,dmonth,mdate);
         dialog.show();
@@ -311,6 +307,7 @@ public class ProductOfferFragment extends Fragment {
                     e.printStackTrace();
                 }
 
+                clearData();
 
             }
         }, new Response.ErrorListener() {
@@ -338,6 +335,14 @@ public class ProductOfferFragment extends Fragment {
         requestQueue.add(stringRequest);
 
     }
+
+    private void clearData(){
+
+        start_date.setText("");
+        end_date.setText("");
+        offer_value.setText("");
+    }
+
 
 
 }

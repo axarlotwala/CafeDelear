@@ -98,7 +98,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
                 RequestQueue requestQueue = Volley.newRequestQueue(context);
                 requestQueue.add(stringRequest);
 
-                }else {
+                }
+                else {
 
 
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.Set_Menu_Url, new Response.Listener<String>() {
