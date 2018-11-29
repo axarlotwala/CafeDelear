@@ -6,6 +6,7 @@ public class Category_model {
     private String cat_name;
     private String url;
     private String cat_visible;
+    private String delear_id;
 
     public Category_model() {
     }
@@ -40,5 +41,13 @@ public class Category_model {
 
     public void setCat_visible(String cat_visible) {
         this.cat_visible = cat_visible;
+    }
+
+    public String getDelear_id() {
+        return delear_id;
+    }
+
+    public void setDelear_id(String delear_id) {
+        this.delear_id = delear_id;
     }
 }

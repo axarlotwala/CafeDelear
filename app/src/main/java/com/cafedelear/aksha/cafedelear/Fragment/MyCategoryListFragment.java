@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.cafedelear.aksha.cafedelear.Adapter.CategoryAdapter;
 import com.cafedelear.aksha.cafedelear.Model.Category_model;
 import com.cafedelear.aksha.cafedelear.R;
 import com.cafedelear.aksha.cafedelear.Utlities.Constant;
+import com.cafedelear.aksha.cafedelear.Utlities.Session;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +39,8 @@ public class MyCategoryListFragment extends Fragment {
     private RecyclerView category_recycler;
     List<Category_model> models;
     private SwipeRefreshLayout refresh;
+    private String delear_id;
+    Session session;
 
     public MyCategoryListFragment() {
         // Required empty public constructor
@@ -54,6 +58,12 @@ public class MyCategoryListFragment extends Fragment {
         category_recycler = view.findViewById(R.id.category_recycler);
         refresh = view.findViewById(R.id.refresh);
         models = new ArrayList<>();
+
+        session = new Session(getActivity());
+
+        delear_id = session.getDELEAR_ID();
+
+        Log.d("Check_Value","Delear_ID : "+delear_id);
 
         setCategory();
 
@@ -74,7 +84,9 @@ public class MyCategoryListFragment extends Fragment {
 
     private void setCategory() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.All_Category_url, new Response.Listener<JSONArray>() {
+        //String Cat_url = "http://192.168.0.103/CafeResturant/Delear/All_Category.php?delear_id=+delear_id+";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.All_Category_url+delear_id, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
@@ -87,7 +99,9 @@ public class MyCategoryListFragment extends Fragment {
                         categoryModel.setCat_id(jsonObject.getString("cat_id"));
                         categoryModel.setCat_name(jsonObject.getString("cat_name"));
                         categoryModel.setUrl(jsonObject.getString("url"));
+                        /*categoryModel.setDelear_id(jsonObject.getString("delear_id"));*/
 
+                        /*Toast.makeText(getActivity(),jsonObject.getString("delear_id"), Toast.LENGTH_SHORT).show();*/
                         models.add(categoryModel);
 
                     } catch (JSONException e) {

@@ -19,6 +19,7 @@ import com.cafedelear.aksha.cafedelear.Adapter.ModifyProductAdapter;
 import com.cafedelear.aksha.cafedelear.Model.Menu_model;
 import com.cafedelear.aksha.cafedelear.R;
 import com.cafedelear.aksha.cafedelear.Utlities.Constant;
+import com.cafedelear.aksha.cafedelear.Utlities.Session;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +35,8 @@ public class ModifyProductFragment extends Fragment {
 
     private RecyclerView modify_product;
     private List<Menu_model> menu_models;
-
+    private String delear_id;
+    Session session;
 
     public ModifyProductFragment() {
         // Required empty public constructor
@@ -56,12 +58,15 @@ public class ModifyProductFragment extends Fragment {
 
         ModifyMenu();
 
+        session = new Session(getActivity());
+
+        delear_id = session.getDELEAR_ID();
         return view;
     }
 
     private void ModifyMenu() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.Single_Menu_List_Url, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.Menu_List_Url+delear_id, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 

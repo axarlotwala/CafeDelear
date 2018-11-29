@@ -199,7 +199,7 @@ public class ProductOfferFragment extends Fragment {
 
     private void pass_Spinn_Menu() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.Single_Menu_List_Url, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.Menu_List_Url+delearid, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 

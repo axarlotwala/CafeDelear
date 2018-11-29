@@ -9,13 +9,15 @@ public class Constant {
     public static final String New_Category_url = Base_Url+"New_Category.php";
     public static final String New_Product_url = Base_Url+"New_Product.php";
     public static final String Category_Visible_url = Base_Url+"Category_List.php";
-    public static final String All_Category_url = Base_Url+"All_Category.php";
+    public static final String All_Category_url = Base_Url+"All_Category.php?delear_id=";
     public static final String Set_Category_url = Base_Url+"Set_Category.php";
     public static final String Delete_Category_Url = Base_Url+"Delete_Category.php";
     public static final String Update_Category_Url = Base_Url+"Update_Category.php";
-    public static final String Single_Menu_List_Url = Base_Url+"Single_Product.php";
+    public static final String Menu_List_Url = Base_Url+"Menu_List.php?delear_id=";
     public static final String Set_Menu_Url = Base_Url+"Set_Product.php";
     public static final String Temp_Image = Base_Url+"temp_image.php";
     public static final String profile_Update = Base_Url+"Profile_Upload.php";
     public static final String Add_Offer_Url = Base_Url+"Add_Offer.php";
+
+
 }
