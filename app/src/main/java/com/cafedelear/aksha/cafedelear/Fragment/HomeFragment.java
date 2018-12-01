@@ -20,7 +20,7 @@ import com.cafedelear.aksha.cafedelear.R;
  */
 public class HomeFragment extends Fragment {
 
-   private LinearLayout category_card,order_card,table_card,offer_card,complain_card,timer_card;
+   private LinearLayout category_card,order_card,table_card,offer_card,complain_card,timer_card,location;
 
 
     public HomeFragment() {
@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         offer_card = view.findViewById(R.id.offer_card);
         complain_card = view.findViewById(R.id.complain_card);
         timer_card = view.findViewById(R.id.time_card);
-        /*location_card = view.findViewById(R.id.location_card);*/
+        location = view.findViewById(R.id.location);
 
         AllClickEvents();
 
@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        /*location_card.setOnClickListener(new View.OnClickListener() {
+        location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment {
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
-        });*/
+        });
 
         offer_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +96,18 @@ public class HomeFragment extends Fragment {
                 transaction.commit();
             }
         });
+
+        timer_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.Frame_container,new SettimerFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
 
     }
 

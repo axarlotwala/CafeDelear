@@ -64,76 +64,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
 
         holder.menu_name.setText(menu_models.get(position).getMenu_name());
         Glide.with(context).load(menu_models.get(position).getMenu_url()).into(holder.menu_image);
-         holder.change_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                menu_id = menu_models.get(position).getMenu_id();
-                 /*holder.change_switch.setSplitTrack();*/
-                 /*holder.change_switch.setChecked(true)*/;
-
-                if (holder.change_switch.isChecked()){
-
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.Set_Menu_Url, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context,error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }){
-
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String,String> params = new HashMap<>();
-                        params.put("is_visible",holder.change_switch.getTextOn().toString());
-                        params.put("menu_id",menu_id);
-                        return params;
-                    }
-                };
-
-                RequestQueue requestQueue = Volley.newRequestQueue(context);
-                requestQueue.add(stringRequest);
-
-                }
-                else {
-
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.Set_Menu_Url, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
-                    }){
-
-                        @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            Map<String,String> params = new HashMap<>();
-                            params.put("menu_id",menu_id);
-                            params.put("is_visible",holder.change_switch.getTextOff().toString());
-                            return params;
-                        }
-                    };
-
-                    RequestQueue requestQueue = Volley.newRequestQueue(context);
-                    requestQueue.add(stringRequest);
-
-                }
-
-
-            }
-        });
-
-
-        /*end bindview holdr*/
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

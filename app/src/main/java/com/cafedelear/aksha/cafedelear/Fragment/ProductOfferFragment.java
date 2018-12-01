@@ -48,7 +48,7 @@ public class ProductOfferFragment extends Fragment {
     private AppCompatSpinner cat_spinn, menu_spinn;
     private ArrayList<Category_model> category_models;
     private ArrayList<Menu_model> menu_models;
-    private String delearid, catid, menuid;
+    private String delearid, catid, menuid,category;
     Session session;
     private Button startoffer_date,endoffer_date,save_offer;
     private int myear, dmonth, mdate;
@@ -153,6 +153,9 @@ public class ProductOfferFragment extends Fragment {
             }
         });
 
+        Bundle bundle = getArguments();
+        category = bundle.getString("cat_id");
+
         return view;
     }
 
@@ -199,7 +202,9 @@ public class ProductOfferFragment extends Fragment {
 
     private void pass_Spinn_Menu() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.Menu_List_Url+delearid, new Response.Listener<JSONArray>() {
+        String pofferurl = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id="+delearid+"&&cat_id="+catid;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(pofferurl, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 

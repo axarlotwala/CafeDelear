@@ -41,7 +41,7 @@ public class MyProductListFragment extends Fragment {
 
     private RecyclerView menu_lists;
     private List<Menu_model> menu_models;
-    private String id,delear_id;
+    private String catid, delear_id;
     Session session;
 
     public MyProductListFragment() {
@@ -56,39 +56,102 @@ public class MyProductListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_myproduct_list, container, false);
 
         menu_lists = view.findViewById(R.id.menu_lists);
-        menu_models = new ArrayList<>();
+
 
         session = new Session(getActivity());
         delear_id = session.getDELEAR_ID();
 
         show_menuList();
 
-        /*Bundle bundle = getArguments();
-        bundle.getString("cat_id");
-
-        Log.d("Cat_ID", "Category : " + bundle.getString("cat_id"));*/
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         menu_lists.setLayoutManager(manager);
+
+        menu_models = new ArrayList<>();
 
         /*menu_lists.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));*/
         return view;
     }
 
-    private void show_menuList(){
+    /*private void show_menuList() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.Menu_List_Url+delear_id, new Response.Listener<JSONArray>() {
+        //  String menuList = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id=10793507385bb9e0715f41f5bb9e&&cat_id=1";
+
+        Bundle bundle = getArguments();
+        catid = bundle.getString("cat_id");
+
+        Log.d("Cat_ID", "Category : " + catid);
+
+
+       String url = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id="+delear_id+"&cat_id="+catid;
+
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
-                Log.d("Check_cat","Cat_List : "+response.toString());
+
 
                 JSONObject jsonObject = null;
 
-                for (int i=0;i<response.length();i++){
+                for (int i=0;i<response.length() ;i++){
 
                     try {
                         jsonObject = response.getJSONObject(i);
+
+                        Menu_model menu_model = new Menu_model();
+                        menu_model.setMenu_name(jsonObject.getString("menu_name"));
+                        *//*menu_model.setMenu_url(jsonObject.getString("menu_url"));*//*
+                        *//*menu_model.setCat_id(jsonObject.getString("cat_id"));
+                        menu_model.setDelear_id(jsonObject.getString("delear_id"));*//*
+
+                        menu_models.add(menu_model);
+
+                        Log.d("All_Value","Value : "+response.getJSONArray(i));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(),e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                MenuAdapter menuAdapter = new MenuAdapter(getActivity(),menu_models);
+                menu_lists.setAdapter(menuAdapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonArrayRequest);
+    }*/
+
+
+    private void show_menuList(){
+
+        Bundle bundle = getArguments();
+        catid = bundle.getString("cat_id");
+
+        Log.d("Cat_ID", "Category : " + catid);
+
+
+        String url = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id="+delear_id+"&cat_id="+catid;
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONArray array = new JSONArray(response);
+
+                    for (int i=0;i<array.length();i++){
+
+                        JSONObject jsonObject = array.getJSONObject(i);
 
                         Menu_model menu_model = new Menu_model();
                         menu_model.setMenu_name(jsonObject.getString("menu_name"));
@@ -96,15 +159,14 @@ public class MyProductListFragment extends Fragment {
 
                         menu_models.add(menu_model);
 
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(getActivity(),e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-
 
                     MenuAdapter menuAdapter = new MenuAdapter(getActivity(),menu_models);
                     menu_lists.setAdapter(menuAdapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(),e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -112,11 +174,12 @@ public class MyProductListFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(stringRequest);
     }
+
 }

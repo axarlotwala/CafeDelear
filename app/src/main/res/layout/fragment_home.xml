@@ -17,36 +17,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/slider_image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/greelabel"
-            android:scaleType="centerCrop"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="50dp"
-            android:background="@color/ColorBlue" />
+            android:orientation="vertical"
+            android:paddingBottom="70dp">
 
 
-        <!--first three menu-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            <!--first three menu-->
+
 
             <LinearLayout
                 android:id="@+id/category_card"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -54,27 +37,22 @@
                     android:src="@drawable/icons_commercial" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="Category"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="130dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/ColorBlue" />
-
 
             <LinearLayout
                 android:id="@+id/order_card"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -82,28 +60,21 @@
                     android:src="@drawable/icons_orders" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="View Order"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="130dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/ColorBlue" />
-
-
             <LinearLayout
                 android:id="@+id/table_card"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:layout_marginLeft="10dp">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -111,41 +82,22 @@
                     android:src="@drawable/icons_table" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="Tabels Detail"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
 
-            <!--<View
-                android:layout_width="1dp"
-                android:layout_height="300dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@color/ColorBlue"
-                android:layout_marginLeft="150dp"/>-->
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/ColorBlue" />
-
-        <!--second three menu-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <LinearLayout
                 android:id="@+id/complain_card"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -155,23 +107,16 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Complain"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Complain" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="130dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/ColorBlue" />
 
 
             <LinearLayout
                 android:id="@+id/time_card"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginLeft="10dp">
 
                 <ImageView
@@ -180,27 +125,19 @@
                     android:src="@drawable/icons_calendar" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="Set Time" />
 
             </LinearLayout>
 
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="130dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/ColorBlue" />
-
-
             <LinearLayout
                 android:id="@+id/offer_card"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
                 android:layout_marginLeft="10dp">
 
                 <ImageView
@@ -209,124 +146,80 @@
                     android:src="@drawable/icons_discount" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:text="Offer" />
 
             </LinearLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/ColorBlue" />
-
-
-        </LinearLayout>
-
-            <!--Third row view-->
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/ColorBlue" />
-
-
             <LinearLayout
+                android:id="@+id/booked_table"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="50dp">
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/booked_table"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icons_table" />
 
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/icons_table" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Booked Table"
-                        android:gravity="center"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="130dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/ColorBlue" />
-
-
-                <LinearLayout
-                    android:id="@+id/location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/location" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Branches" />
-
-                </LinearLayout>
-
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="130dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/ColorBlue" />
-
-
-                <LinearLayout
-                    android:id="@+id/latest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    android:layout_marginLeft="10dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/icons_discount" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="latest" />
-
-                </LinearLayout>
-
-
-                <View
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/ColorBlue" />
-
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Booked Table" />
 
             </LinearLayout>
 
 
+            <LinearLayout
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/location" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Branches" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/latest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icons_discount" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="latest" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
 </FrameLayout>

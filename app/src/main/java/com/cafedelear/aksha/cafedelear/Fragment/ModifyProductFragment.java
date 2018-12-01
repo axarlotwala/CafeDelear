@@ -35,7 +35,7 @@ public class ModifyProductFragment extends Fragment {
 
     private RecyclerView modify_product;
     private List<Menu_model> menu_models;
-    private String delear_id;
+    private String delear_id,catid;
     Session session;
 
     public ModifyProductFragment() {
@@ -61,12 +61,18 @@ public class ModifyProductFragment extends Fragment {
         session = new Session(getActivity());
 
         delear_id = session.getDELEAR_ID();
+
+        Bundle bundle = getArguments();
+        catid = bundle.getString("cat_id");
+
         return view;
     }
 
     private void ModifyMenu() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.Menu_List_Url+delear_id, new Response.Listener<JSONArray>() {
+        String mourl = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id="+delear_id+"&&cat_id="+catid;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(mourl, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
