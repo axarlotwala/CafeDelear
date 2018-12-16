@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.cafedelear.aksha.cafedelear.Adapter.MenuAdapter;
 import com.cafedelear.aksha.cafedelear.Adapter.ModifyProductAdapter;
 import com.cafedelear.aksha.cafedelear.Model.Menu_model;
 import com.cafedelear.aksha.cafedelear.R;
@@ -58,59 +61,62 @@ public class ModifyProductFragment extends Fragment {
 
         ModifyMenu();
 
-        session = new Session(getActivity());
-
-        delear_id = session.getDELEAR_ID();
-
-        Bundle bundle = getArguments();
-        catid = bundle.getString("cat_id");
 
         return view;
     }
 
     private void ModifyMenu() {
 
+        session = new Session(getActivity());
+        delear_id = session.getDELEAR_ID();
+
+
+        Bundle bundle = getArguments();
+        catid = bundle.getString("cat_id");
+
+
         String mourl = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id="+delear_id+"&&cat_id="+catid;
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(mourl, new Response.Listener<JSONArray>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, mourl, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONArray response) {
+            public void onResponse(String response) {
 
-                JSONObject jsonObject = null;
+                try {
+                    JSONArray array = new JSONArray(response);
 
-                for (int i=0;i <response.length() ; i++) {
+                    for (int i=0;i<response.length();i++){
 
-                    try {
-                        jsonObject = response.getJSONObject(i);
+                        JSONObject jsonObject = array.getJSONObject(i);
 
                         Menu_model menu_model = new Menu_model();
-                        menu_model.setMenu_name(jsonObject.getString("menu_name"));
-                        menu_model.setMenu_url(jsonObject.getString("menu_url"));
+                        menu_model.setMenu_id(jsonObject.getString("menu_id"));
+                        menu_model.setMenu_url(jsonObject.getString("menu_name"));
+                        menu_model.setMenu_name(jsonObject.getString("menu_url"));
 
                         menu_models.add(menu_model);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
                     }
 
+
+                    ModifyProductAdapter modifyProductAdapter = new ModifyProductAdapter(getActivity(),menu_models);
+                    modify_product.setAdapter(modifyProductAdapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
 
-                ModifyProductAdapter modifyProductAdapter  = new ModifyProductAdapter(getActivity(),menu_models);
-                modify_product.setAdapter(modifyProductAdapter);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getActivity(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(stringRequest);
     }
 
 }

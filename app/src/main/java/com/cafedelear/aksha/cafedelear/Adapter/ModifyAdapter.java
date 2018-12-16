@@ -1,6 +1,7 @@
 package com.cafedelear.aksha.cafedelear.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -74,6 +75,10 @@ public class ModifyAdapter extends RecyclerView.Adapter<ModifyAdapter.ViewHolder
                         .addToBackStack(null)
                         .commit();
 
+                Bundle bundle = new Bundle();
+                bundle.putString("cat_id",models.get(position).getCat_id());
+                fragment.setArguments(bundle);
+
                 Toast.makeText(context,models.get(position).getCat_id(),Toast.LENGTH_SHORT).show();
 
 
@@ -81,135 +86,9 @@ public class ModifyAdapter extends RecyclerView.Adapter<ModifyAdapter.ViewHolder
         });
 
 
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                UpdateCategory();
-            }
-        });
-
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                DeleteData();
-            }
-        });
-
-
 
     }
 
-    private void UpdateCategory() {
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        View view = LayoutInflater.from(context).inflate(R.layout.single_category,null);
-        final EditText update_catename = view.findViewById(R.id.update_catname);
-
-
-        Button btn_update = view.findViewById(R.id.btn_update);
-
-        builder.setTitle("Update Category");
-
-        btn_update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final String name = update_catename.getText().toString().trim();
-
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.Update_Category_Url, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-
-                            Toast.makeText(context,jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        Toast.makeText(context,error.getMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                }) {
-
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String,String> params = new HashMap<>();
-
-                        params.put("cat_id",cat_id);
-                        params.put("cat_name",name);
-                        return params;
-                    }
-                };
-
-                RequestQueue requestQueue = Volley.newRequestQueue(context);
-                requestQueue.add(stringRequest);
-            }
-        });
-
-        builder.setView(view);
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-
-    }
-
-
-    private void DeleteData() {
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.Delete_Category_Url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                JSONObject jsonObject;
-
-                try {
-                    jsonObject = new JSONObject(response);
-
-                    if (!jsonObject.getBoolean("error")){
-
-                        Toast.makeText(context,jsonObject.getString("message"),Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-
-                        Toast.makeText(context,jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(context,error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }){
-
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("cat_id",cat_id);
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
-    }
 
 
     @Override
@@ -219,8 +98,8 @@ public class ModifyAdapter extends RecyclerView.Adapter<ModifyAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView category_image;
-        TextView category_name,edit,delete;
+        ImageView category_image,edit,delete;
+        TextView category_name;
         LinearLayout linear_modify;
 
 

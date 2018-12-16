@@ -20,7 +20,7 @@ import com.cafedelear.aksha.cafedelear.R;
  */
 public class HomeFragment extends Fragment {
 
-   private LinearLayout category_card,order_card,table_card,offer_card,complain_card,timer_card,location;
+   private LinearLayout category_card,order_card,offer_card,complain_card,timer_card,location;
 
 
     public HomeFragment() {
@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment {
 
         category_card = view.findViewById(R.id.category_card);
         order_card = view.findViewById(R.id.order_card);
-        table_card = view.findViewById(R.id.table_card);
         offer_card = view.findViewById(R.id.offer_card);
         complain_card = view.findViewById(R.id.complain_card);
         timer_card = view.findViewById(R.id.time_card);
@@ -63,17 +62,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        table_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.v("table_ Book","Booked" + table_card);
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.replace(R.id.Frame_container,new BookTableFragment());
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-            }
-        });
 
         location.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,16 +85,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        timer_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.Frame_container,new SettimerFragment());
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
 
 
     }

@@ -48,6 +48,11 @@ public class ManageCategoryFragment extends Fragment {
 
         adapter.AddFragment(new ModifyCategoryFragment(),"Modify");
 
+        /*check for buggy problem*/
+
+
+
+
         view_pager.setAdapter(adapter);
 
         tab_bar.setupWithViewPager(view_pager);
