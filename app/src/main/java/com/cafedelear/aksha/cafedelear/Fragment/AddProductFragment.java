@@ -189,7 +189,7 @@ public class AddProductFragment extends Fragment {
     /*Category Data View In spinner*/
     private void fiilData () {
 
-            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.Category_Visible_url, new Response.Listener<JSONArray>() {
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.All_Category_url+delear_id, new Response.Listener<JSONArray>() {
                 @Override
                 public void onResponse(JSONArray response) {
 

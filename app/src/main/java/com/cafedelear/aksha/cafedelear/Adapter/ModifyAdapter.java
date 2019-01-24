@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,6 @@ public class ModifyAdapter extends RecyclerView.Adapter<ModifyAdapter.ViewHolder
 
     private Context context;
     private List<Category_model> models;
-    private String cat_id;
 
     public ModifyAdapter(Context context, List<Category_model> models) {
         this.context = context;
@@ -61,7 +61,6 @@ public class ModifyAdapter extends RecyclerView.Adapter<ModifyAdapter.ViewHolder
         Glide.with(context).load(models.get(position).getUrl()).into(holder.category_image);
         holder.category_name.setText(models.get(position).getCat_name());
 
-        cat_id = models.get(position).getCat_id();
 
         holder.linear_modify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +78,7 @@ public class ModifyAdapter extends RecyclerView.Adapter<ModifyAdapter.ViewHolder
                 bundle.putString("cat_id",models.get(position).getCat_id());
                 fragment.setArguments(bundle);
 
-                Toast.makeText(context,models.get(position).getCat_id(),Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(context,models.get(position).getCat_id(), Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -14,7 +14,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/menu_image"
+            android:id="@+id/menuimage_url"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@color/ColorWhite"/>

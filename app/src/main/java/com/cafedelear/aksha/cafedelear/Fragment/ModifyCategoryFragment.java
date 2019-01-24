@@ -75,11 +75,11 @@ public class ModifyCategoryFragment extends Fragment {
 
         delear_id = session.getDELEAR_ID();
 
-        String url = "http://192.168.0.103/CafeResturant/Delear/Category_List.php";
+        /*String url = "http://192.168.0.103/CafeResturant/Delear/Category_List.php";*/
 
 
 
-        JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+        JsonArrayRequest request = new JsonArrayRequest(Constant.All_Category_url+delear_id, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
@@ -88,12 +88,14 @@ public class ModifyCategoryFragment extends Fragment {
                 for (int i=0;i<response.length();i++){
 
                     try {
-                        JSONObject object = response.getJSONObject(i);
+                        jsonObject = response.getJSONObject(i);
 
                         Category_model categoryModel = new Category_model();
+                        categoryModel.setCat_id(jsonObject.getString("cat_id"));
                         categoryModel.setCat_name(jsonObject.getString("cat_name"));
                         categoryModel.setUrl(jsonObject.getString("url"));
 
+                        models.add(categoryModel);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -104,6 +106,7 @@ public class ModifyCategoryFragment extends Fragment {
 
                 ModifyAdapter modifyAdapter = new ModifyAdapter(getActivity(),models);
                 modify_recycler.setAdapter(modifyAdapter);
+
             }
 
         }, new Response.ErrorListener() {

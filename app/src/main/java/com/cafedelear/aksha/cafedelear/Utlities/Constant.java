@@ -21,6 +21,7 @@ public class Constant {
     public static final String profile_Update = Base_Url+"Profile_Upload.php";
     public static final String Add_Offer_Url = Base_Url+"Add_Offer.php";
     public static final String Visible_Menu = Base_Url+"Visible_Menu.php";
+    public static final String Services_Url = Base_Url+"GetServices.php";
 
 
 }

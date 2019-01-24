@@ -85,6 +85,17 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        timer_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.Frame_container,new TimeManagerFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
 
 
     }

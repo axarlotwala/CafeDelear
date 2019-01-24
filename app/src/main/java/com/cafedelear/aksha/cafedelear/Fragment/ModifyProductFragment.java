@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,9 @@ public class ModifyProductFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         modify_product.setLayoutManager(manager);
 
+        session = new Session(getActivity());
+        delear_id = session.getDELEAR_ID();
+
         ModifyMenu();
 
 
@@ -67,13 +71,10 @@ public class ModifyProductFragment extends Fragment {
 
     private void ModifyMenu() {
 
-        session = new Session(getActivity());
-        delear_id = session.getDELEAR_ID();
-
-
         Bundle bundle = getArguments();
         catid = bundle.getString("cat_id");
 
+        Log.d("CAT_TAG","CHECK: "+bundle.getString("cat_id"));
 
         String mourl = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id="+delear_id+"&&cat_id="+catid;
 
@@ -84,14 +85,14 @@ public class ModifyProductFragment extends Fragment {
                 try {
                     JSONArray array = new JSONArray(response);
 
-                    for (int i=0;i<response.length();i++){
+                    for (int i=0;i<array.length();i++){
 
                         JSONObject jsonObject = array.getJSONObject(i);
 
                         Menu_model menu_model = new Menu_model();
                         menu_model.setMenu_id(jsonObject.getString("menu_id"));
-                        menu_model.setMenu_url(jsonObject.getString("menu_name"));
-                        menu_model.setMenu_name(jsonObject.getString("menu_url"));
+                        menu_model.setMenu_url(jsonObject.getString("menu_url"));
+                        menu_model.setMenu_name(jsonObject.getString("menu_name"));
 
                         menu_models.add(menu_model);
                     }
@@ -103,6 +104,7 @@ public class ModifyProductFragment extends Fragment {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(getActivity(),e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
 

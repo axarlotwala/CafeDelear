@@ -17,7 +17,7 @@ public class Session {
      String IsLogin;
      private SwitchCompat switchCompat;
 
-    private static final String PREF_NAME = "CafeDelear";
+    private static String PREF_NAME = "CafeDelear";
     private String DELEAR_ID = "delear_id";
     private String DELEAR_NAME = "delear_name";
     private String DELEAR_EMAIL = "delear_email";

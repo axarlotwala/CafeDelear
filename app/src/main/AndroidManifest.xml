@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,6 +31,11 @@
 
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegistrationActivity" />
+
+        <meta-data
+            android:name="googlelocation_api_Key"
+            android:value="@string/Place_sdk_api_Key"/>
+
     </application>
 
 </manifest>

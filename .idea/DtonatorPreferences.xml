@@ -10,11 +10,9 @@
         <option value="PROVIDE_PRIVATE_FIELD" />
       </list>
     </option>
-    <option name="fieldType" value="GSON_EXPOSE" />
+    <option name="fieldType" value="POJO" />
     <option name="naming">
-      <list>
-        <option value="CAMEL_CASE" />
-      </list>
+      <list />
     </option>
   </component>
 </project>

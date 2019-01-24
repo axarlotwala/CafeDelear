@@ -38,7 +38,7 @@ public class ModifyProductAdapter extends RecyclerView.Adapter<ModifyProductAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.menu_name.setText(menu_models.get(position).getMenu_name());
-        Glide.with(context).load(menu_models.get(position).getMenu_url()).into(holder.menu_image);
+        Glide.with(context).load(menu_models.get(position).getMenu_url()).into(holder.menuimage_url);
 
     }
 
@@ -49,18 +49,15 @@ public class ModifyProductAdapter extends RecyclerView.Adapter<ModifyProductAdap
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView menu_image;
-        TextView menu_name,edit,delete;
-        LinearLayout linear_modify;
+        ImageView menuimage_url;
+        TextView menu_name;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-        menu_image = itemView.findViewById(R.id.menu_image);
+        menuimage_url = itemView.findViewById(R.id.menuimage_url);
         menu_name = itemView.findViewById(R.id.menu_name);
-        edit = itemView.findViewById(R.id.edit);
-        delete = itemView.findViewById(R.id.delete);
 
         }
 

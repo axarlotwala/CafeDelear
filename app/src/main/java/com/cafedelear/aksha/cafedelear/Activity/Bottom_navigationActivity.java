@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.cafedelear.aksha.cafedelear.Fragment.HomeFragment;
 import com.cafedelear.aksha.cafedelear.Fragment.JobpostFragment;
 import com.cafedelear.aksha.cafedelear.Fragment.NotificationFragment;
+import com.cafedelear.aksha.cafedelear.Fragment.OurServicesFragment;
 import com.cafedelear.aksha.cafedelear.Fragment.PaymentDetailFragment;
 import com.cafedelear.aksha.cafedelear.Fragment.ProfileFragment;
 import com.cafedelear.aksha.cafedelear.MainActivity;
@@ -47,7 +48,7 @@ public class Bottom_navigationActivity extends AppCompatActivity {
                     return true;
 
                     case R.id.nav_job:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.Frame_container,new JobpostFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.Frame_container,new OurServicesFragment()).commit();
                     return true;
 
                 case R.id.nav_notification:
