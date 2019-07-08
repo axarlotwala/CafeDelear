@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.cafedelear.aksha.cafedelear">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
 
 
     <application
@@ -14,12 +13,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:targetApi="M"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Activity.MainActivity" />
 
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".Activity.Bottom_navigationActivity"
-            android:label="@string/title_activity_bottom_navigation" />
+        <activity android:name=".Activity.Bottom_navigationActivity"
+            android:label="@string/title_activity_bottom_navigation"/>
 
         <activity android:name=".Activity.SplashScreenActivity">
             <intent-filter>
@@ -32,10 +32,12 @@
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegistrationActivity" />
 
+        <!--<meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBSTkyRGg5HGi_MH5eO2rvS04dmvQWyo3Y"/>-->
         <meta-data
-            android:name="googlelocation_api_Key"
-            android:value="@string/Place_sdk_api_Key"/>
-
+            android:name="io.fabric.ApiKey"
+            android:value="83e784abdc43f7e726b8c41e5165b6970426c495" />
     </application>
 
 </manifest>

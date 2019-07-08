@@ -6,18 +6,24 @@ import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.cafedelear.aksha.cafedelear.Adapter.DaysAdapter;
+import com.cafedelear.aksha.cafedelear.Model.Days_model;
 import com.cafedelear.aksha.cafedelear.R;
 import com.kyleduo.switchbutton.SwitchButton;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -26,11 +32,8 @@ import java.util.Calendar;
 public class SetTimerFragment extends Fragment {
 
 
-    private AppCompatImageView day_button;
-    private SwitchButton set_delete;
-    private TimePicker time_picker;
-    private Button send,cancle;
-
+    private RecyclerView listDays;
+    private ArrayList<Days_model> days_model;
 
 
     public SetTimerFragment() {
@@ -43,71 +46,45 @@ public class SetTimerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_set_timer, container, false);
-        day_button = view.findViewById(R.id.day_button);
-        set_delete = view.findViewById(R.id.set_delete);
-        time_picker = view.findViewById(R.id.time_picker);
-        send = view.findViewById(R.id.send);
-        cancle = view.findViewById(R.id.cancel);
+        listDays = view.findViewById(R.id.listDays);
 
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        listDays.setLayoutManager(manager);
 
-        day_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialogs();
-            }
-        });
+        setBroadCastTimer();
+
+        DaysAdapter daysAdapter = new DaysAdapter(getActivity(),days_model);
+        listDays.setAdapter(daysAdapter);
 
         return view;
     }
 
-    private void showDialogs() {
+    private void setBroadCastTimer() {
 
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
+        days_model = new ArrayList<>();
 
-        View view = getActivity().getLayoutInflater().inflate(R.layout.select_layout,null);
+        Days_model day_model = new Days_model("1","Sunday","09:00:00","19:00:00",false);
+        days_model.add(day_model);
 
-        AppCompatImageView first,second,third,four;
-        TextView once,daily,five_days,custom;
+        Days_model day_model1 = new Days_model("2","Sunday","09:00:00","19:00:00",false);
+        days_model.add(day_model1);
 
-        first = view.findViewById(R.id.first);
-        second = view.findViewById(R.id.second);
-        third = view.findViewById(R.id.third);
-        four = view.findViewById(R.id.four);
+        Days_model day_model2 = new Days_model("3","Sunday","09:00:00","19:00:00",false);
+        days_model.add(day_model2);
 
-        once = view.findViewById(R.id.once);
-        daily = view.findViewById(R.id.daily);
-        five_days = view.findViewById(R.id.five_days);
-        custom = view.findViewById(R.id.custom);
+        Days_model day_model3 = new Days_model("4","Sunday","09:00:00","19:00:00",false);
+        days_model.add(day_model3);
 
+        Days_model day_model4 = new Days_model("5","Sunday","09:00:00","19:00:00",false);
+        days_model.add(day_model4);
 
-        bottomSheetDialog.setContentView(view);
-        bottomSheetDialog.show();
+        Days_model day_model5 = new Days_model("6","Sunday","09:00:00","19:00:00",false);
+        days_model.add(day_model5);
 
+        Days_model day_model6 = new Days_model("7","Sunday","09:00:00","19:00:00",true);
+        days_model.add(day_model6);
     }
 
-    private void set_timer(){
 
-        Calendar calendar = Calendar.getInstance();
-
-        if (Build.VERSION.SDK_INT >= 23) {
-            calendar.set(calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH),
-                    time_picker.getHour(),
-                    time_picker.getMinute(),
-                    0);
-            Log.d("Time",""+time_picker.getHour());
-            Log.d("MINUTE",""+time_picker.getMinute());
-
-        }else {
-            calendar.set(calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH),
-                    time_picker.getCurrentHour(),
-                    time_picker.getCurrentMinute(),
-                    0);
-
-        }
-    }
 
 }

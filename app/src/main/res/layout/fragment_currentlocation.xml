@@ -13,10 +13,10 @@
         android:layout_margin="10dp">
 
 
-        <ImageView
+<!--        <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/powered_by_google_light"/>
+            android:src="@drawable/powered_by_google_light"/>-->
 
         <Button
             android:id="@+id/update_request"
@@ -41,6 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:padding="10dp" />
+
+
 
     </LinearLayout>
 

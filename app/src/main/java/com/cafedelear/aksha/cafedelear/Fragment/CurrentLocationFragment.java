@@ -25,15 +25,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cafedelear.aksha.cafedelear.R;
-import com.google.android.gms.location.Geofence;
-import com.google.android.gms.location.GeofencingClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.PlaceDetectionClient;
-import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,6 +64,7 @@ public class CurrentLocationFragment extends Fragment {
         update_request = view.findViewById(R.id.update_request);
         remove_request = view.findViewById(R.id.remove_request);
         loc_text = view.findViewById(R.id.loc_text);
+
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
@@ -137,4 +134,6 @@ public class CurrentLocationFragment extends Fragment {
         }
         locationManager.requestLocationUpdates("gps", 2000, 0, locationListener);
     }
+
+
 }

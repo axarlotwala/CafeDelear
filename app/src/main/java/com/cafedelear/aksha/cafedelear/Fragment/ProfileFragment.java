@@ -1,19 +1,13 @@
 package com.cafedelear.aksha.cafedelear.Fragment;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.util.Printer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,18 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.cafedelear.aksha.cafedelear.Activity.LoginActivity;
-import com.cafedelear.aksha.cafedelear.MainActivity;
-import com.cafedelear.aksha.cafedelear.Model.Delear_model;
+import com.cafedelear.aksha.cafedelear.Activity.MainActivity;
 import com.cafedelear.aksha.cafedelear.R;
 import com.cafedelear.aksha.cafedelear.Utlities.Constant;
 import com.cafedelear.aksha.cafedelear.Utlities.Session;
 
 import net.gotev.uploadservice.MultipartUploadRequest;
 import net.gotev.uploadservice.UploadNotificationConfig;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -4,6 +4,7 @@ package com.cafedelear.aksha.cafedelear.Fragment;
 import android.os.Bundle;
 import android.support.design.internal.BottomNavigationMenu;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,8 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.cafedelear.aksha.cafedelear.Activity.Bottom_navigationActivity;
 import com.cafedelear.aksha.cafedelear.R;
+
+import static com.cafedelear.aksha.cafedelear.Activity.Bottom_navigationActivity.userOption;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,8 +48,6 @@ public class HomeFragment extends Fragment {
 
         AllClickEvents();
 
-
-
         return view;
     }
 
@@ -59,6 +62,7 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.Frame_container,new ManageCategoryFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
+                userOption.setVisibility(View.GONE);
 
             }
         });
@@ -71,6 +75,7 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.Frame_container,new LocationFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
+                userOption.setVisibility(View.GONE);
             }
         });
 
@@ -82,6 +87,7 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.Frame_container,new ManageOfferFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
+                userOption.setVisibility(View.GONE);
             }
         });
 
@@ -93,11 +99,17 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.Frame_container,new TimeManagerFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
+                userOption.setVisibility(View.GONE);
             }
         });
 
-
-
+        order_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Toast Click", Toast.LENGTH_SHORT).show();
+                userOption.setVisibility(View.GONE);
+            }
+        });
     }
 
 }

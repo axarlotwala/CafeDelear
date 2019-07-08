@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import com.cafedelear.aksha.cafedelear.Adapter.ViewPagerAdapter;
 import com.cafedelear.aksha.cafedelear.R;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * A simple {@link Fragment} subclass.

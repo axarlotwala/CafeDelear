@@ -93,7 +93,6 @@ public class ProductOfferFragment extends Fragment {
         pass_Spinn_Menu();
 
         session = new Session(getActivity());
-
         delearid = session.getDELEAR_ID();
 
         /*menu Spinner Data*/
@@ -153,98 +152,29 @@ public class ProductOfferFragment extends Fragment {
             }
         });
 
-        Bundle bundle = getArguments();
-        category = bundle.getString("cat_id");
+        session = new Session(getActivity());
+
 
         return view;
     }
 
     private void pass_Spinn_Category() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Constant.All_Category_url, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
+        String category_url = "http://192.168.0.103/CafeResturant/Delear/All_Category.php?delear_id="+delearid;
 
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        Category_model model = new Category_model();
-                        model.setCat_id(jsonObject.getString("cat_id"));
-                        model.setCat_name(jsonObject.getString("cat_name"));
-                        model.setUrl(jsonObject.getString("url"));
-
-                        category_models.add(model);
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-
-                Spinner_adapter adapter = new Spinner_adapter(getActivity(), category_models);
-                cat_spinn.setAdapter(adapter);
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(jsonArrayRequest);
     }
 
     private void pass_Spinn_Menu() {
 
         String pofferurl = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id="+delearid+"&&cat_id="+catid;
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(pofferurl, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
 
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        Menu_model menu_model = new Menu_model();
-                        menu_model.setMenu_name(jsonObject.getString("menu_name"));
-                        menu_model.setMenu_url(jsonObject.getString("menu_url"));
-                        menu_model.setMenu_id(jsonObject.getString("menu_id"));
-
-                        menu_models.add(menu_model);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                Menu_Spinner_Adapter adapter = new Menu_Spinner_Adapter(getActivity(), menu_models);
-                menu_spinn.setAdapter(adapter);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(jsonArrayRequest);
     }
 
 
     /*method of start offer*/
 
     private void offerStart() {
-
 
         final Calendar calendar = Calendar.getInstance();
         myear = calendar.get(Calendar.YEAR);
@@ -282,6 +212,8 @@ public class ProductOfferFragment extends Fragment {
         dialog.show();
 
         dialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+
+        //if offer end date is selected is also start Offer date then offer end time is Date-23-59-59
     }
 
     private void addOffer(){
