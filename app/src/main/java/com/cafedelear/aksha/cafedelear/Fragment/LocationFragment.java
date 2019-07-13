@@ -1,17 +1,18 @@
 package com.cafedelear.aksha.cafedelear.Fragment;
 
 
-import android.location.LocationListener;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import com.cafedelear.aksha.cafedelear.Adapter.ViewPagerAdapter;
 import com.cafedelear.aksha.cafedelear.R;
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,9 +39,9 @@ public class LocationFragment extends Fragment {
         location_pager = view.findViewById(R.id.location_pager);
         adapter = new ViewPagerAdapter(getChildFragmentManager());
 
-        adapter.AddFragment(new CurrentLocationFragment(),"Current Location");
+        adapter.AddFragment(new AddLocationFragment(),"New Branch");
 
-        adapter.AddFragment(new OurBranchListFragment(),"Our Branch");
+        adapter.AddFragment(new MapBranchFragment(),"Our Branch");
 
         location_pager.setAdapter(adapter);
 

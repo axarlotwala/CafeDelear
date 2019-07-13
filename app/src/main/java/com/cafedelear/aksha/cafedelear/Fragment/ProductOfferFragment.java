@@ -2,7 +2,9 @@ package com.cafedelear.aksha.cafedelear.Fragment;
 
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatSpinner;
 import android.util.Log;
@@ -54,6 +56,7 @@ public class ProductOfferFragment extends Fragment {
     private int myear, dmonth, mdate;
     DatePickerDialog dialog;
     EditText offer_value,start_date,end_date;
+    ProgressDialog progressDialog;
 
 
     public ProductOfferFragment() {
@@ -77,32 +80,19 @@ public class ProductOfferFragment extends Fragment {
         save_offer = view.findViewById(R.id.save_offer);
         offer_value = view.findViewById(R.id.offer_value);
 
-        cat_spinn.setPrompt("Select Category");
-        menu_spinn.setPrompt("Select Menu");
-
-
         /*dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000); */// for show only present and future date
         /*date = DateFormat.getDateInstance().format("yyyy-MM-dd HH:mm:ss");*/
 
-        /*category*/
-        category_models = new ArrayList<>();
-        pass_Spinn_Category();
-
-        /*menu item*/
-        menu_models = new ArrayList<>();
-        pass_Spinn_Menu();
-
-        session = new Session(getActivity());
-        delearid = session.getDELEAR_ID();
-
-        /*menu Spinner Data*/
-
-        menu_spinn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*Category Spinner Data*/
+        cat_spinn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Menu_model menu_model = (Menu_model) parent.getItemAtPosition(position);
-                menuid = menu_model.getMenu_id();
+                Category_model categoryModel = (Category_model) parent.getItemAtPosition(position);
+                catid = categoryModel.getCat_id();
+                pass_Spinn_Menu(catid);
+                Log.d("CatId","Cat:"+catid);
+
             }
 
             @Override
@@ -110,15 +100,16 @@ public class ProductOfferFragment extends Fragment {
 
             }
         });
+        /*category*/
+        pass_Spinn_Category();
 
-        /*Category Spinner Data*/
-
-        cat_spinn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*menu Spinner Data*/
+        menu_spinn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Category_model categoryModel = (Category_model) parent.getItemAtPosition(position);
-                catid = categoryModel.getCat_id();
+                Menu_model menu_model = (Menu_model) parent.getItemAtPosition(position);
+                menuid = menu_model.getMenu_id();
             }
 
             @Override
@@ -137,7 +128,6 @@ public class ProductOfferFragment extends Fragment {
             }
         });
 
-
         endoffer_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,21 +144,100 @@ public class ProductOfferFragment extends Fragment {
 
         session = new Session(getActivity());
 
-
         return view;
     }
 
     private void pass_Spinn_Category() {
+        session = new Session(getActivity());
+        delearid = session.getDELEAR_ID();
+        Log.d("getDID","DelearID"+delearid);
 
-        String category_url = "http://192.168.0.103/CafeResturant/Delear/All_Category.php?delear_id="+delearid;
+        category_models = new ArrayList<>();
+        StringRequest stringRequest  = new StringRequest(Request.Method.POST, Constant.All_Category_url+delearid, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                   // Log.e("getCatResponse","Response"+response);
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i=0;i<jsonArray.length();i++){
 
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        Category_model category_model = new Category_model();
+                        category_model.setCat_id(object.getString("cat_id"));
+                        category_model.setDelear_id(object.getString("delear_id"));
+                        category_model.setCat_name(object.getString("cat_name"));
+                        category_model.setUrl(object.getString("url"));
+                        category_models.add(category_model);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Spinner_adapter adapter = new Spinner_adapter(getActivity(), category_models);
+                cat_spinn.setAdapter(adapter);
+
+
+                //cat_spinn.setPrompt("Select Category ");
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
     }
 
-    private void pass_Spinn_Menu() {
+    private void pass_Spinn_Menu(final String catid) {
+        session = new Session(getActivity());
+        delearid = session.getDELEAR_ID();
+        Log.d("getDID","DelearID"+delearid);
 
+        /*menu item*/
+        menu_models = new ArrayList<>();
         String pofferurl = "http://192.168.0.103/CafeResturant/Delear/Menu_List.php?delear_id="+delearid+"&&cat_id="+catid;
+        StringRequest stringRequest  = new StringRequest(Request.Method.POST,pofferurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.e("getMenuResponse","Response"+response);
+                    JSONArray jsonArray = new JSONArray(response);
+                    progressDialog = ProgressDialog.show(getActivity(),"Please Wait...","Fetch Menu...",true);
 
+                   // progressDialog = ProgressDialog.show(getActivity(),"Please Wait ...","Fetch Menu ....",true);
 
+                    for (int i=0;i<jsonArray.length();i++){
+
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        Menu_model menu_model = new Menu_model();
+                        menu_model.setMenu_id(object.getString("menu_id"));
+                        menu_model.setDelear_id(object.getString("delear_id"));
+                        menu_model.setMenu_name(object.getString("menu_name"));
+                        menu_model.setMenu_url(object.getString("menu_url"));
+                        menu_models.add(menu_model);
+                    }
+
+                    progressDialog.dismiss();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Menu_Spinner_Adapter adapter = new Menu_Spinner_Adapter(getActivity(),menu_models);
+                menu_spinn.setAdapter(adapter);
+                //cat_spinn.setPrompt("Select Category ");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
     }
 
 

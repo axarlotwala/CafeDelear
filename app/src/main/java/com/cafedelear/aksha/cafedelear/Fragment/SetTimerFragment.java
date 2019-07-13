@@ -66,22 +66,22 @@ public class SetTimerFragment extends Fragment {
         Days_model day_model = new Days_model("1","Sunday","09:00:00","19:00:00",false);
         days_model.add(day_model);
 
-        Days_model day_model1 = new Days_model("2","Sunday","09:00:00","19:00:00",false);
+        Days_model day_model1 = new Days_model("2","Monday","09:00:00","19:00:00",false);
         days_model.add(day_model1);
 
-        Days_model day_model2 = new Days_model("3","Sunday","09:00:00","19:00:00",false);
+        Days_model day_model2 = new Days_model("3","Tuesday","09:00:00","19:00:00",false);
         days_model.add(day_model2);
 
-        Days_model day_model3 = new Days_model("4","Sunday","09:00:00","19:00:00",false);
+        Days_model day_model3 = new Days_model("4","Wednesday","09:00:00","19:00:00",false);
         days_model.add(day_model3);
 
-        Days_model day_model4 = new Days_model("5","Sunday","09:00:00","19:00:00",false);
+        Days_model day_model4 = new Days_model("5","Thursday","09:00:00","19:00:00",false);
         days_model.add(day_model4);
 
-        Days_model day_model5 = new Days_model("6","Sunday","09:00:00","19:00:00",false);
+        Days_model day_model5 = new Days_model("6","Friday","09:00:00","19:00:00",false);
         days_model.add(day_model5);
 
-        Days_model day_model6 = new Days_model("7","Sunday","09:00:00","19:00:00",true);
+        Days_model day_model6 = new Days_model("7","Saturday","09:00:00","19:00:00",true);
         days_model.add(day_model6);
     }
 

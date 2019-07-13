@@ -15,12 +15,11 @@ repositories {
 }
 
 
-
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.cafedelear.aksha.cafedelear"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -50,14 +49,18 @@ dependencies {
 
     /*https://github.com/leinardi/FloatingActionButtonSpeedDial*/
     implementation "com.leinardi.android:speed-dial:2.0.1"
-
-    //google api
-   /* implementation 'com.google.android.gms:play-services-location:17.0.0'
-    implementation 'com.google.android.gms:play-services-places:17.0.0'
-    implementation 'com.google.android.gms:play-services-nearby:17.0.0'*/
+    implementation "com.google.android.gms:play-services-location:17.0.0"
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    /*https://github.com/cachapa/ExpandableLayout*/
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+
+    /*Braintree Paypal Integration*/
+    implementation 'com.braintreepayments.api:drop-in:3.7.1'
 
     testImplementation 'junit:junit:4.13-beta-3'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
 }

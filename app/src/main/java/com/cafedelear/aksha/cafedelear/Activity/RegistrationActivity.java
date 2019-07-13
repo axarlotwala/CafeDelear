@@ -130,17 +130,11 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     if (!jsonObject.getBoolean("error")) {
 
-                        /*Delear_model model = new Delear_model();
-                                model.setDelear_id(jsonObject.getString("delear_id"));
-                                model.setDelear_email(jsonObject.getString("delear_email"));
-                                model.setDelear_name(jsonObject.getString("delear_name"));*/
-
                         if(session.getInstace(getApplicationContext()).getIsLogin()) {
                             Log.d("Check_Loin","Or Not"+session.getInstace(getApplicationContext()).getIsLogin());
                             Intent intent = new Intent(RegistrationActivity.this, Bottom_navigationActivity.class);
                             startActivity(intent);
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-
                         }
                     }
                     else {
@@ -149,14 +143,9 @@ public class RegistrationActivity extends AppCompatActivity {
                         Toast.makeText(RegistrationActivity.this,jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
 
                     }
-
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
 
             }
         }, new Response.ErrorListener() {

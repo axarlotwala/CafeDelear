@@ -74,6 +74,19 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (session.getDELEAR_ID() != null) {
+
+            if (session.getIsLogin()) {
+                Intent intent = new Intent(LoginActivity.this, Bottom_navigationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }
+    }
 
     private void userLogin() {
 
@@ -132,16 +145,9 @@ public class LoginActivity extends AppCompatActivity {
                         session.setDELEAR_PROFILE(profile);
                         session.setIsLogin(true);
 
-
                         Log.d("SetCheck", "set" + userid);
 
                         session.getInstace(getApplicationContext()).getIsLogin();
-                        Log.d("DelearID", "Id :" + jsonObject.getString("delear_id"));
-                        Log.d("DelearEmail", "Email : " + jsonObject.getString("delear_email"));
-                        Log.d("Delear_name", "Name" + jsonObject.getString("delear_name"));
-                        Log.d("IS_Login", "Check : " + session.getInstace(getApplicationContext()).getIsLogin());
-                        Log.d("Get_Email", "Get :" + session.getDELEAR_EMAIL());
-                        Log.d("ProfileImage","Image : "+session.getDELEAR_PROFILE());
 
                     } else {
                         dialog.dismiss();
@@ -160,7 +166,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-
             }
         }) {
 
@@ -179,6 +184,5 @@ public class LoginActivity extends AppCompatActivity {
         queue.add(stringRequest);
 
     }
-
 
 }

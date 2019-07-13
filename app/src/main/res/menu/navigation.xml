@@ -10,9 +10,6 @@
         android:title="Payment Detail"
         android:icon="@drawable/ic_credit_card_black_24dp"/>
 
-    <item android:id="@+id/nav_job"
-        android:title="Job Post"
-        android:icon="@drawable/ic_card_travel_black_24dp"/>
 
     <item android:id="@+id/nav_notification"
         android:title="Notification"

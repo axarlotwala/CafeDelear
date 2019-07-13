@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="4">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,8 +29,7 @@
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginLeft="70dp"/>
+                android:layout_marginLeft="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.Frame_container,new TimeManagerFragment());
+                transaction.replace(R.id.Frame_container,new SetTimerFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
                 userOption.setVisibility(View.GONE);

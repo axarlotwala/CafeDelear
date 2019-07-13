@@ -14,30 +14,40 @@
         android:layout_height="wrap_content">
 
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--first row Completed-->
         <LinearLayout
+            android:id="@+id/linearFirst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="70dp">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-
-            <!--first three menu-->
-
+        <android.support.v7.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardElevation="2dp"
+            android:layout_margin="10dp">
 
             <LinearLayout
                 android:id="@+id/category_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:src="@drawable/icons_commercial" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -45,6 +55,13 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp">
 
 
             <LinearLayout
@@ -52,10 +69,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:src="@drawable/icons_orders" />
 
@@ -69,133 +87,227 @@
 
             </LinearLayout>
 
+        </android.support.v7.widget.CardView>
 
-            <LinearLayout
-                android:id="@+id/table_card"
-                android:layout_width="match_parent"
+        </LinearLayout>
+
+            <!--Second Row Completed-->
+
+        <LinearLayout
+            android:id="@+id/linearSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_below="@id/linearFirst">
+
+            <!--<android.support.v7.widget.CardView
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp">
+                android:layout_weight="1"
+                android:layout_margin="10dp">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/icons_table" />
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/table_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Tabels Detail"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icons_table" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Tabels Detail"
+                        android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/complain_card"
-                android:layout_width="match_parent"
+                </LinearLayout>
+            </android.support.v7.widget.CardView>-->
+
+            <android.support.v7.widget.CardView
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center">
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardElevation="2dp">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/icons_comments" />
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/complain_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:text="Complain" />
+                    android:weightSum="1">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icons_comments" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Complain" />
+
+                </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/time_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/icons_calendar" />
+            </android.support.v7.widget.CardView>
 
-                <TextView
+        </LinearLayout>
+
+         <!--Third Row Completed-->
+
+         <LinearLayout
+             android:id="@+id/linearThird"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:weightSum="2"
+             android:layout_below="@id/linearSecond">
+
+             <android.support.v7.widget.CardView
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                 android:layout_margin="10dp">
+
+             <LinearLayout
+                 android:id="@+id/time_card"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical">
+
+                 <ImageView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/icons_calendar" />
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:gravity="center"
+                     android:text="Set Time" />
+
+             </LinearLayout>
+             </android.support.v7.widget.CardView>
+
+             <android.support.v7.widget.CardView
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 app:cardElevation="2dp"
+                 android:layout_margin="10dp"
+                 android:layout_weight="1">
+
+                 <LinearLayout
+                     android:id="@+id/offer_card"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical">
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/icons_discount" />
+
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center"
+                         android:gravity="center"
+                         android:text="Offer" />
+
+                 </LinearLayout>
+             </android.support.v7.widget.CardView>
+
+         </LinearLayout>
+
+         <!--Fourth Row Completed-->
+
+        <LinearLayout
+            android:id="@+id/linearFour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_below="@id/linearThird">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="150dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/booked_table"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Set Time" />
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icons_table" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Booked Table" />
+
+                </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/offer_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp">
+            </android.support.v7.widget.CardView>
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/icons_discount" />
+            <android.support.v7.widget.CardView
+                android:layout_width="150dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Offer" />
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/location" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Branches" />
 
-            <LinearLayout
-                android:id="@+id/booked_table"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/icons_table" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Booked Table" />
-
-            </LinearLayout>
+                </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/location" />
+            </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Branches" />
+        </LinearLayout>
 
-            </LinearLayout>
+        </RelativeLayout>
+
+
+
+        <!--
+
+
 
 
             <LinearLayout
@@ -217,9 +329,8 @@
                     android:gravity="center"
                     android:text="latest" />
 
-            </LinearLayout>
+            </LinearLayout>-->
 
 
-        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </FrameLayout>

@@ -7,5 +7,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="Place_sdk_api_Key">AIzaSyDWwWM1zhxdvdSRgyYVlj5KppG-tYdk1oc</string>
+    <string name="set_address">wyegfud uiegubr iuhugiher goihgiu erhiuhurg</string>
+    <string name="Map_sdk_api_key">AIzaSyC1sQ6R8AZrnWcYv-RJmz_iogOM4sABZeQ</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

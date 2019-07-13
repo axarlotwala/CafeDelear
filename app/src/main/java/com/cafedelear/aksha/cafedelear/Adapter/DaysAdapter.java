@@ -35,6 +35,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.Holder> {
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int i) {
 
+        holder.check_dayName.setText(days_models.get(i).getDayName());
         holder.tv_startTime.setText(days_models.get(i).getStartTime());
         holder.tv_endTime.setText(days_models.get(i).getEndTime());
 

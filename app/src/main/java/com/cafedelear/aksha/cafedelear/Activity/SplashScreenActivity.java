@@ -20,14 +20,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
 
-        final Intent intent = new Intent(this,Bottom_navigationActivity.class);
+        final Intent intent = new Intent(this,MainActivity.class);
 
         Thread thread = new Thread() {
 
             public void run(){
 
                 try {
-                    sleep(5000);
+                    sleep(2000);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

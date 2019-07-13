@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/nav_user"
         android:title="User"
-        android:icon="@drawable/ic_home_black_24dp"/>
-
+        android:icon="@drawable/ic_boy"/>
 
     <item android:id="@+id/nav_cafeDelear"
         android:title="Cafe Delear"
-        android:icon="@drawable/ic_credit_card_black_24dp"/>
+        android:icon="@drawable/ic_address"/>
 
     <item android:id="@+id/nav_rider"
         android:title="Cafe Rider"
-        android:icon="@drawable/ic_card_travel_black_24dp"/>
+        android:icon="@drawable/location"/>
 
 </menu>

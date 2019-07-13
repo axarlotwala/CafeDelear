@@ -11,49 +11,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:padding="10dp">
+        android:layout_margin="10dp">
 
         <CheckBox
             android:id="@+id/check_dayName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sunday"
-            android:layoutDirection="rtl"
-            android:paddingRight="40dp"
-            android:layout_marginLeft="20dp"/>
+            android:paddingLeft="30dp"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/tv_startTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="20dp"
             android:text="09:00"
             android:background="@drawable/rectangleshape"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="8dp" />
 
         <TextView
             android:id="@+id/tv_endTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="20dp"
             android:text="09:00"
             android:background="@drawable/rectangleshape"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="8dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/edit_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/edit_time"
-            android:layout_marginLeft="15dp"
+            android:layout_alignParentRight="true"
             tools:ignore="VectorDrawableCompat" />
+        </RelativeLayout>
+
     </LinearLayout>
 
 

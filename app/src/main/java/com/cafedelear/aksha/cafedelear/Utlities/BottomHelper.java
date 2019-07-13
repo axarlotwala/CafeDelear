@@ -18,16 +18,13 @@ public class BottomHelper {
             shiftingMode.setAccessible(true);
             shiftingMode.setBoolean(menuView, false);
             shiftingMode.setAccessible(false);
-            if(menuView.getChildCount()<6)
-            {
-                for (int i = 0; i < menuView.getChildCount(); i++) {
-                    BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-                    //noinspection RestrictedApi
-                    item.setShifting(false);
-                    // set once again checked value, so view will be updated
-                    //noinspection RestrictedApi
-                    item.setChecked(item.getItemData().isChecked());
-                }
+            for (int i = 0; i < menuView.getChildCount(); i++) {
+                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+                //noinspection RestrictedApi
+                item.setShifting(false);
+                // set once again checked value, so view will be updated
+                //noinspection RestrictedApi
+                item.setChecked(item.getItemData().isChecked());
             }
         } catch (NoSuchFieldException e) {
             Log.e("BNVHelper", "Unable to get shift mode field", e);
